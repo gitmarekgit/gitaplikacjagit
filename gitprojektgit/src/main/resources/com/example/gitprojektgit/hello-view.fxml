@@ -3,13 +3,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gitprojektgit.HelloController">
    <children>
       <Label layoutX="106.0" layoutY="102.0" text="Nazwa użytkownika" />
       <Label layoutX="143.0" layoutY="147.0" text="Hasło" />
-      <TextField layoutX="226.0" layoutY="98.0" />
-      <TextField layoutX="226.0" layoutY="143.0" />
-      <Button layoutX="278.0" layoutY="200.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="97.0" text="Zaloguj się" />
+      <TextField fx:id="nazwaUzytkownika" layoutX="226.0" layoutY="98.0" />
+      <Button fx:id="zaloguj" layoutX="278.0" layoutY="200.0" mnemonicParsing="false" onAction="#zaloguj" prefHeight="25.0" prefWidth="97.0" text="Zaloguj się" />
+      <Label fx:id="text" layoutX="278.0" layoutY="279.0" prefHeight="17.0" prefWidth="97.0" />
+      <PasswordField fx:id="haslo" layoutX="226.0" layoutY="143.0" />
    </children>
 </Pane>
