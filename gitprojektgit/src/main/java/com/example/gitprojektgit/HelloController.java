@@ -18,7 +18,7 @@ public class HelloController {
         String nazwa = "Marek";
         String haslo1 = "marek123";
 
-        if(nazwaUzytkownika.equals(nazwa) && haslo.equals(haslo)){
+        if(nazwaUzytkownika.getText().equals(nazwa) && haslo.getText().equals(haslo1)){
             text.setText("Zalogowales sie!");
         }
         else{
