@@ -1,15 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="225.0" prefWidth="384.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gitprojektgit.login">
-
-      <Label layoutX="40.0" layoutY="59.0" text="Nazwa użytkownika" />
-      <Label layoutX="40.0" layoutY="97.0" text="Hasło" />
-      <TextField fx:id="nazwaUzytkownika" layoutX="157.0" layoutY="55.0" />
-      <PasswordField fx:id="haslo" layoutX="157.0" layoutY="93.0" />
-      <Button fx:id="zaloguj" layoutX="209.0" layoutY="141.0" mnemonicParsing="false" onAction="#zaloguj" prefHeight="25.0" prefWidth="97.0" text="Zaloguj się" />
-      <Label fx:id="text" layoutX="161.0" layoutY="182.0" prefHeight="17.0" prefWidth="97.0" />
-
-</Pane>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gitprojektgit.login">
+   <left>
+      <AnchorPane prefHeight="400.0" prefWidth="244.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="22.0" layoutY="118.0" pickOnBounds="true" preserveRatio="true" />
+            <Label layoutX="76.0" layoutY="184.0" text="TU BEDZIE LOGO" />
+         </children></AnchorPane>
+   </left>
+   <center>
+      <AnchorPane prefHeight="400.0" prefWidth="334.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="28.0" layoutY="149.0" text="Nazwa Użytkownika" />
+            <Label layoutX="28.0" layoutY="200.0" text="Hasło" />
+            <PasswordField fx:id="haslo" layoutX="167.0" layoutY="196.0" />
+            <Button fx:id="zaloguj" layoutX="141.0" layoutY="253.0" mnemonicParsing="false" onAction="#zalogujUzytkownika" text="Zaloguj się" />
+            <TextField fx:id="nazwaUzytkownika" layoutX="167.0" layoutY="145.0" />
+            <Label fx:id="zleDane" layoutX="127.0" layoutY="94.0" prefHeight="51.0" prefWidth="176.0" textFill="RED" />
+            <Label layoutX="99.0" layoutY="42.0" text="TU BEDZIE NAZWA APLIKACJI" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
