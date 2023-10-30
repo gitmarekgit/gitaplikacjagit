@@ -3,25 +3,42 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gitprojektgit.login">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: DFEFFB;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gitprojektgit.login">
    <left>
       <AnchorPane prefHeight="400.0" prefWidth="244.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="22.0" layoutY="118.0" pickOnBounds="true" preserveRatio="true" />
-            <Label layoutX="76.0" layoutY="184.0" text="TU BEDZIE LOGO" />
+            <ImageView fitHeight="200.0" fitWidth="190.0" layoutX="27.0" layoutY="100.0">
+               <image>
+                  <Image url="@../../../../../img/parasolka.png" />
+               </image>
+            </ImageView>
          </children></AnchorPane>
    </left>
    <center>
       <AnchorPane prefHeight="400.0" prefWidth="334.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="28.0" layoutY="149.0" text="Nazwa Użytkownika" />
-            <Label layoutX="28.0" layoutY="200.0" text="Hasło" />
-            <PasswordField fx:id="haslo" layoutX="167.0" layoutY="196.0" />
-            <Button fx:id="zaloguj" layoutX="141.0" layoutY="253.0" mnemonicParsing="false" onAction="#zalogujUzytkownika" text="Zaloguj się" />
-            <TextField fx:id="nazwaUzytkownika" layoutX="167.0" layoutY="145.0" />
-            <Label fx:id="zleDane" layoutX="127.0" layoutY="94.0" prefHeight="51.0" prefWidth="176.0" textFill="RED" />
-            <Label layoutX="99.0" layoutY="42.0" text="TU BEDZIE NAZWA APLIKACJI" />
+            <Label layoutX="8.0" layoutY="187.0" text="Nazwa Użytkownika">
+               <font>
+                  <Font name="Book Antiqua" size="16.0" />
+               </font></Label>
+            <Label layoutX="8.0" layoutY="228.0" text="Hasło">
+               <font>
+                  <Font name="Book Antiqua" size="16.0" />
+               </font></Label>
+            <PasswordField fx:id="haslo" layoutX="167.0" layoutY="228.0" promptText="Hasło" />
+            <Button fx:id="zaloguj" layoutX="112.0" layoutY="279.0" mnemonicParsing="false" onAction="#zalogujUzytkownika" prefHeight="37.0" prefWidth="109.0" text="Zaloguj się" textAlignment="CENTER">
+               <font>
+                  <Font name="Book Antiqua" size="16.0" />
+               </font></Button>
+            <TextField fx:id="nazwaUzytkownika" layoutX="167.0" layoutY="187.0" promptText="Nazwa użytkownika" />
+            <Label fx:id="zleDane" layoutX="127.0" layoutY="134.0" prefHeight="51.0" prefWidth="176.0" textFill="RED" />
+            <ImageView fitHeight="134.0" fitWidth="234.0" layoutX="61.0" layoutY="30.0">
+               <image>
+                  <Image url="@../../../../../img/logo.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </center>
