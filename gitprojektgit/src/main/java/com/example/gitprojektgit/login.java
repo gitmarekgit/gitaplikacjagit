@@ -1,8 +1,8 @@
 package com.example.gitprojektgit;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
@@ -17,11 +17,11 @@ public class login {
     private Label zleDane;
     @FXML
     private Button zaloguj;
-    public void zalogujUzytkownika(ActionEvent actionEvent) throws IOException {
-        sprawdzDane();
-    }
+    @FXML
+    private Hyperlink zarejestruj;
 
-    private void sprawdzDane() throws IOException {
+
+    public void zalogujUzytkownika() throws IOException {
         //new Main aby miec mozliwosc zmiany sceny
         Main m = new Main();
         //sprawdza czy dane sa poprawne
@@ -36,6 +36,10 @@ public class login {
             //jak zle dane
             zleDane.setText("Podano złe dane.");
         }
+    }
 
+    public void rejestracja() throws IOException{
+        Main m = new Main();
+        m.zmienScene("rejestracja.fxml");
     }
 }
