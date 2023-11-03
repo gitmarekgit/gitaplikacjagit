@@ -22,7 +22,7 @@ public class Main extends Application {
         stage.show();
     }
 
-    //zmiana sceny jesli udalo sie zalogowac
+    //funckja ktora zmienia scene
     public void zmienScene(String fxml) throws IOException{
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(fxml));
         Scene scene = new Scene(fxmlLoader.load(), 600, 400);
