@@ -20,4 +20,10 @@ public class studioNagran {
         //wyskakuje okno ktore pyta czy napewno chcesz zamknac aplikacje
         potwierdzenieDzialania.pokazOkno("Czy napewno chcesz wyjść?", "Wyjście z programu.");
     }
+
+    public void dodaj() throws IOException {
+        String[] dane = new String[]{};
+        dane = oknoDodaj.dodaj();
+
+    }
 }
