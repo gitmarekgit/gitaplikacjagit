@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class Main extends Application {
-    private static Stage mainStage;
+    public static Stage mainStage;
     @Override
     public void start(Stage stage) throws IOException {
         //glowne okno i startowa scena (logowanie)

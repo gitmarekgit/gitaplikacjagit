@@ -15,4 +15,9 @@ public class studioNagran {
         String nowaNazwaStudia = zmianaNazwyStudia.pokazOkno();
         nazwaStudia.setText(nowaNazwaStudia);
     }
+
+    public void zamknijAplikacje() throws IOException{
+        //wyskakuje okno ktore pyta czy napewno chcesz zamknac aplikacje
+        potwierdzenieDzialania.pokazOkno("Czy napewno chcesz wyjść?", "Wyjście z programu.");
+    }
 }
