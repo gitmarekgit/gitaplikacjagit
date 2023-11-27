@@ -21,14 +21,6 @@ public class Main extends Application {
         stage.setScene(scene);
         stage.show();
     }
-
-    //funckja ktora zmienia scene
-    public void zmienScene(String fxml) throws IOException{
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(fxml));
-        Scene scene = new Scene(fxmlLoader.load(), 600, 400);
-        mainStage.setScene(scene);
-    }
-
     public static void main(String[] args) {
         launch();
     }

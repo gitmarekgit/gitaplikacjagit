@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: DFEFFB;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gitprojektgit.login">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: DFEFFB;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gitprojektgit.zmianaScen">
    <left>
       <AnchorPane prefHeight="400.0" prefWidth="244.0" BorderPane.alignment="CENTER">
          <children>
@@ -29,7 +29,7 @@
                </font></Label>
             <TextField fx:id="nazwaUzytkownika" layoutX="84.0" layoutY="184.0" prefHeight="26.0" prefWidth="186.0" promptText="Nazwa użytkownika" />
             <PasswordField fx:id="haslo" layoutX="85.0" layoutY="225.0" prefHeight="26.0" prefWidth="185.0" promptText="Hasło" />
-            <Button fx:id="zaloguj" layoutX="123.0" layoutY="285.0" mnemonicParsing="false" onAction="#zalogujUzytkownika" prefHeight="37.0" prefWidth="109.0" text="Zaloguj się" textAlignment="CENTER">
+            <Button fx:id="zaloguj" layoutX="123.0" layoutY="285.0" mnemonicParsing="false" onAction="#zaloguj" prefHeight="37.0" prefWidth="109.0" text="Zaloguj się" textAlignment="CENTER">
                <font>
                   <Font size="16.0" />
                </font></Button>

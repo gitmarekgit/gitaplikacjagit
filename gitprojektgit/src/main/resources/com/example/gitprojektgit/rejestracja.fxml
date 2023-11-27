@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: DFEFFB;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gitprojektgit.rejestracja">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: DFEFFB;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gitprojektgit.zmianaScen">
     <left>
         <AnchorPane prefHeight="400.0" prefWidth="244.0" BorderPane.alignment="CENTER">
             <children>
@@ -33,7 +33,7 @@
                     <font>
                         <Font size="16.0" />
                     </font></Button>
-                <Label layoutX="125.0" layoutY="120.0" prefHeight="51.0" prefWidth="176.0" textFill="RED" />
+                <Label fx:id="zleDane" layoutX="125.0" layoutY="120.0" prefHeight="51.0" prefWidth="176.0" textFill="RED" />
                 <ImageView fitHeight="196.0" fitWidth="259.0" layoutX="48.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="file:/C:/Users/marek/Desktop/gitprojektgit/gitaplikacjagit/gitprojektgit/src/img/logo.png" />
