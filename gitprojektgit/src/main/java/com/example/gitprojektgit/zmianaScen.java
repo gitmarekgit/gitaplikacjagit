@@ -11,6 +11,10 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Objects;
 
 public class zmianaScen {
@@ -27,58 +31,84 @@ public class zmianaScen {
     @FXML
     private Label zleDane;
 
-    public void zaloguj(ActionEvent event) throws IOException{
+    // Metoda do sprawdzenia czy użytkownik istnieje w bazie danych
+    private boolean validateLogin(String username, String password) {
+        String query = "SELECT * FROM logowanie WHERE Login = ? AND Haslo = ?";
+        try (Connection connection = DatabaseManager.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, username);
+            preparedStatement.setString(2, password);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            return resultSet.next();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    // Metoda do dodawania nowego użytkownika do bazy danych
+    private void registerUserInDatabase(String username, String password) {
+        String query = "INSERT INTO logowanie (Login, Haslo) VALUES (?, ?)";
+        try (Connection connection = DatabaseManager.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, username);
+            preparedStatement.setString(2, password);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Tutaj można obsłużyć błąd związany z dodawaniem użytkownika do bazy danych
+        }
+    }
+
+    public void zaloguj(ActionEvent event) throws IOException {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("studioNagran.fxml")));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
 
-        //sprawdza czy dane sa poprawne
-        if(nazwaUzytkownika.getText().equals("admin") && haslo.getText().equals("admin123")){
-            //jesli poprawne to zmienia scene na studio nagran
+        if (validateLogin(nazwaUzytkownika.getText(), haslo.getText())) {
+            // Poprawne dane logowania, zmiana sceny na studioNagran.fxml
             stage.setScene(scene);
             stage.show();
-        } else if (nazwaUzytkownika.getText().isEmpty() || haslo.getText().isEmpty()) {
-            //jak pola sa puste
-            zleDane.setText("Uzupełnij dane.");
-        }
-        else{
-            //jak zle dane
+        } else {
+            // Złe dane logowania
             zleDane.setText("Podano złe dane.");
         }
     }
 
-    public void zarejestrujUzytkownika(ActionEvent event) throws IOException{
+    public void zarejestrujUzytkownika(ActionEvent event) throws IOException {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("studioNagran.fxml")));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
-        //do zrobienia jak bedzie baza danych -> dodanie podanych danych do bazy
-        if (nazwaUzytkownika.getText().isEmpty() || haslo.getText().isEmpty() || potwierdzHaslo.getText().isEmpty()) {
-            //jak pola sa puste
+
+        String hasloPierwsze = haslo.getText();
+        String potwierdzoneHaslo = potwierdzHaslo.getText();
+
+        if (nazwaUzytkownika.getText().isEmpty() || hasloPierwsze.isEmpty() || potwierdzoneHaslo.isEmpty()) {
             zleDane.setText("Uzupełnij dane.");
-        }
-        else{
+        } else if (!hasloPierwsze.equals(potwierdzoneHaslo)) {
+            zleDane.setText("Hasła nie są identyczne.");
+        } else {
+            // Poprawne dane rejestracji, dodanie użytkownika do bazy
+            registerUserInDatabase(nazwaUzytkownika.getText(), hasloPierwsze);
+            // Zmiana sceny na studioNagran.fxml
             stage.setScene(scene);
             stage.show();
         }
     }
 
-    public void rejestracja(ActionEvent event) throws IOException{
-        //zmiana sceny na scene z rejestracja
+    public void rejestracja(ActionEvent event) throws IOException {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("rejestracja.fxml")));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
 
-    public void logowanie(ActionEvent event) throws IOException{
-        //zmiana sceny na scene z logowaniem
+    public void logowanie(ActionEvent event) throws IOException {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("login.fxml")));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
-
-
 }
