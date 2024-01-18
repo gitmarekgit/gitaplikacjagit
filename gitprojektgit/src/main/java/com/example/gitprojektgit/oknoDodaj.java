@@ -13,11 +13,32 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class oknoDodaj {
 
-    public static String[] dodaj() throws IOException {
+    private static int pobierzIDUzytkownika(String nazwaUzytkownika) {
+        String query = "SELECT ID FROM logowanie WHERE Login = ?";
+        try (Connection connection = DatabaseManager.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, nazwaUzytkownika);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                return resultSet.getInt("ID");
+            } else {
+                // Handle the case where the user is not found
+                return -1; // or throw an exception
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Handle the SQL exception
+            return -1; // or throw an exception
+        }
+    }
+
+
+    public static String[] dodaj(String nazwaUzytkownika) throws IOException {
         Stage stage = new Stage();
         stage.setResizable(false);
         stage.initModality(Modality.APPLICATION_MODAL);
@@ -42,8 +63,9 @@ public class oknoDodaj {
         Button dodaj = new Button("Dodaj utwór");
         dodaj.setOnAction(e -> {
             stage.close();
-            String[] dane = {daneTworcy.getText(), nazwaTytul.getText(), nazwaPlyty.getText()};
-            registerUserInDatabase(dane[0], dane[1], dane[2]);
+            String userID = String.valueOf(pobierzIDUzytkownika(nazwaUzytkownika));
+            String[] dane = {daneTworcy.getText(), nazwaTytul.getText(), nazwaPlyty.getText(), userID};
+            dodajMuzyke(dane[0], dane[1], dane[2], dane[3]);
         });
         dodaj.setPadding(new Insets(10));
         przycisk.setAlignment(Pos.CENTER);
@@ -59,10 +81,10 @@ public class oknoDodaj {
         return new String[]{daneTworcy.getText(), nazwaTytul.getText(), nazwaPlyty.getText()};
     }
 
-    private static void registerUserInDatabase(String autor, String tytul, String album) {
+    private static void dodajMuzyke(String autor, String tytul, String album, String userID) {
         System.out.println("Before database operation");
 
-        String query = "INSERT INTO muzyka (Autor, Utwor, Album) VALUES (?, ?, ?)";
+        String query = "INSERT INTO muzyka (Autor, Utwor, Album, userID) VALUES (?, ?, ?, ?)";
 
         try (Connection connection = DatabaseManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
@@ -71,6 +93,7 @@ public class oknoDodaj {
             preparedStatement.setString(1, autor);
             preparedStatement.setString(2, tytul);
             preparedStatement.setString(3, album);
+            preparedStatement.setString(4, userID);
 
             System.out.println("Executing SQL update");
             preparedStatement.executeUpdate();

@@ -40,7 +40,7 @@ public class studioNagran {
     }
 
     public void dodaj() throws IOException {
-        String[] dane = new String[]{};
-        dane = oknoDodaj.dodaj();
+        String nazwaUzytkownika = Session.getLoggedInUserName();
+        String[] dane = oknoDodaj.dodaj(nazwaUzytkownika);
     }
 }

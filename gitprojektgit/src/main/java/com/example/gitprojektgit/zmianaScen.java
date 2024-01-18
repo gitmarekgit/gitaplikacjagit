@@ -67,6 +67,8 @@ public class zmianaScen {
 
         if (validateLogin(nazwaUzytkownika.getText(), haslo.getText())) {
             // Poprawne dane logowania, zmiana sceny na studioNagran.fxml
+            String userName = nazwaUzytkownika.getText();
+            Session.setLoggedInUserName(userName);  // Ustawienie informacji o zalogowanym użytkowniku
             stage.setScene(scene);
             stage.show();
         } else {
@@ -76,10 +78,6 @@ public class zmianaScen {
     }
 
     public void zarejestrujUzytkownika(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("studioNagran.fxml")));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-
         String hasloPierwsze = haslo.getText();
         String potwierdzoneHaslo = potwierdzHaslo.getText();
 
@@ -90,11 +88,16 @@ public class zmianaScen {
         } else {
             // Poprawne dane rejestracji, dodanie użytkownika do bazy
             registerUserInDatabase(nazwaUzytkownika.getText(), hasloPierwsze);
-            // Zmiana sceny na studioNagran.fxml
+            // Wyświetlenie komunikatu i zmiana sceny na login.fxml
+            zleDane.setText("Rejestracja udana. Zaloguj się ponownie.");
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("login.fxml")));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
         }
     }
+
 
     public void rejestracja(ActionEvent event) throws IOException {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("rejestracja.fxml")));
