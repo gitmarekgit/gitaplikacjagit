@@ -129,6 +129,14 @@ public class zmianaScen {
         stage.show();
     }
 
+    public void ustawienia(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ustawienia.fxml")));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
     public void zamknijAplikacje(ActionEvent event){
         //wyskakuje okienko ktore pyta czy napewno chcesz wyjsc
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
