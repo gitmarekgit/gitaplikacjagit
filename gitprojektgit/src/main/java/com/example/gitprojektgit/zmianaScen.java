@@ -6,8 +6,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -30,6 +33,9 @@ public class zmianaScen {
     private TextField potwierdzHaslo;
     @FXML
     private Label zleDane;
+
+    @FXML
+    private AnchorPane scenePane;
 
     // Metoda do sprawdzenia czy użytkownik istnieje w bazie danych
     private boolean validateLogin(String username, String password) {
@@ -114,4 +120,37 @@ public class zmianaScen {
         stage.setScene(scene);
         stage.show();
     }
+
+    public void listaUtworow(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("studioNagranLista.fxml")));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void zamknijAplikacje(ActionEvent event){
+        //wyskakuje okienko ktore pyta czy napewno chcesz wyjsc
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("EXIT");
+        alert.setHeaderText("Aplikacja zostanie wyłączona");
+        alert.setContentText("Czy napewno chcesz wyjść?");
+
+        if(alert.showAndWait().get()== ButtonType.OK){
+            //jak kliknie sie ok to sie wylacza a jak cancel to wraca do poprzedniej sceny
+            stage = (Stage) scenePane.getScene().getWindow();
+            stage.close();
+        }
+    }
+
+    @FXML
+    private Label nazwaStudia;
+
+    public void zmienNazweStudia() throws IOException{
+        //zmiana nazwy studia
+        String nowaNazwaStudia = zmianaNazwyStudia.pokazOkno();
+        nazwaStudia.setText(nowaNazwaStudia);
+    }
+
+
 }
