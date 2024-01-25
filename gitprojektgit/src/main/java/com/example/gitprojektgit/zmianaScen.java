@@ -37,6 +37,14 @@ public class zmianaScen {
     @FXML
     private AnchorPane scenePane;
 
+    public void zmienScene(ActionEvent event, String scena) throws IOException {
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(scena)));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
     // Metoda do sprawdzenia czy użytkownik istnieje w bazie danych
     private boolean validateLogin(String username, String password) {
         String query = "SELECT * FROM logowanie WHERE Login = ? AND Haslo = ?";
@@ -96,45 +104,25 @@ public class zmianaScen {
             registerUserInDatabase(nazwaUzytkownika.getText(), hasloPierwsze);
             // Wyświetlenie komunikatu i zmiana sceny na login.fxml
             zleDane.setText("Rejestracja udana. Zaloguj się ponownie.");
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("login.fxml")));
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
+            zmienScene(event, "login.fxml");
         }
     }
 
 
     public void rejestracja(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("rejestracja.fxml")));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        zmienScene(event, "rejestracja.fxml");
     }
 
     public void logowanie(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("login.fxml")));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        zmienScene(event, "login.fxml");
     }
 
     public void listaUtworow(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("studioNagranLista.fxml")));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        zmienScene(event, "studioNagranLista.fxml");
     }
 
     public void ustawienia(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ustawienia.fxml")));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        zmienScene(event, "ustawienia.fxml");
     }
 
     public void zamknijAplikacje(ActionEvent event){
@@ -159,6 +147,4 @@ public class zmianaScen {
         String nowaNazwaStudia = zmianaNazwyStudia.pokazOkno();
         nazwaStudia.setText(nowaNazwaStudia);
     }
-
-
 }

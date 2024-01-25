@@ -17,7 +17,12 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Ustawienia">
             <items>
-                  <MenuItem mnemonicParsing="false" text="Zmień tryb ekranu" />
+                  <Menu mnemonicParsing="false" text="Zmień tryb ekranu">
+                    <items>
+                      <MenuItem mnemonicParsing="false" text="Tryb jasny" />
+                        <MenuItem mnemonicParsing="false" text="Tryb ciemny" />
+                    </items>
+                  </Menu>
               <MenuItem mnemonicParsing="false" onAction="#zmienNazweStudia" text="Zmień nazwę studia" />
             </items>
           </Menu>
