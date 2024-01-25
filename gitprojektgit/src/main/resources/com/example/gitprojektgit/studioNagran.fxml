@@ -4,9 +4,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="scenePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: DFEFFB;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gitprojektgit.zmianaScen">
+<AnchorPane fx:id="scenePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="body" stylesheets="file:/C:/Users/marek/Desktop/gitprojektgit/gitaplikacjagit/gitprojektgit/src/styles/light_mode.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gitprojektgit.zmianaScen">
    <children>
-      <MenuBar layoutY="1.0" prefHeight="26.0" prefWidth="600.0">
+      <MenuBar prefHeight="26.0" prefWidth="600.0">
         <menus>
           <Menu mnemonicParsing="false" text="Plik">
             <items>
@@ -17,18 +17,23 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Ustawienia">
             <items>
-                  <MenuItem mnemonicParsing="false" text="Zmień tryb ekranu" />
+                  <Menu mnemonicParsing="false" text="Zmień tryb ekranu">
+                    <items>
+                      <MenuItem fx:id="trybJasny" mnemonicParsing="false" onAction="#ustawTrybJasny" text="Tryb jasny" />
+                        <MenuItem fx:id="trybCIemny" mnemonicParsing="false" onAction="#ustawTrybCiemny" text="Tryb ciemny" />
+                    </items>
+                  </Menu>
               <MenuItem mnemonicParsing="false" onAction="#zmienNazweStudia" text="Zmień nazwę studia" />
             </items>
           </Menu>
         </menus>
       </MenuBar>
-      <Label layoutX="205.0" layoutY="42.0" text="Witaj w studiu nagrań">
+      <Label layoutX="205.0" layoutY="42.0" styleClass="text" stylesheets="file:/C:/Users/marek/Desktop/gitprojektgit/gitaplikacjagit/gitprojektgit/src/styles/light_mode.css" text="Witaj w studiu nagrań">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label fx:id="nazwaStudia" alignment="CENTER" contentDisplay="CENTER" layoutX="-7.0" layoutY="79.0" prefHeight="38.0" prefWidth="614.0" text="SUMU" textAlignment="CENTER">
+      <Label fx:id="nazwaStudia" alignment="CENTER" contentDisplay="CENTER" layoutX="-7.0" layoutY="79.0" prefHeight="38.0" prefWidth="614.0" styleClass="text" stylesheets="file:/C:/Users/marek/Desktop/gitprojektgit/gitaplikacjagit/gitprojektgit/src/styles/light_mode.css" text="SUMU" textAlignment="CENTER">
          <font>
             <Font name="Cambria" size="30.0" />
          </font></Label>
