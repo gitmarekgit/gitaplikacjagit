@@ -12,12 +12,14 @@ public class Muzyka {
     private String autor;
     private String utwor;
     private String album;
+    private String dodanoPrzez;
 
-    public Muzyka(int id, String autor, String utwor, String album) {
+    public Muzyka(int id, String autor, String utwor, String album, String dodanoPrzez) {
         this.id = id;
         this.autor = autor;
         this.utwor = utwor;
         this.album = album;
+        this.dodanoPrzez = dodanoPrzez;
     }
 
     public int getId() {
@@ -36,10 +38,16 @@ public class Muzyka {
         return album;
     }
 
+    public String getDodanoPrzez() {
+        return dodanoPrzez;
+    }
+
     public static List<Muzyka> pobierzDaneZBazy() {
         List<Muzyka> listaMuzyki = new ArrayList<>();
 
-        String query = "SELECT ID, Autor, Utwor, Album FROM muzyka";
+        String query = "SELECT m.ID, m.Autor, m.Utwor, m.Album, l.Login AS DodanoPrzez " +
+                "FROM muzyka m " +
+                "JOIN logowanie l ON m.userID = l.ID";
 
         try (Connection connection = DatabaseManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
@@ -49,10 +57,11 @@ public class Muzyka {
             while (resultSet.next()) {
                 int id = resultSet.getInt("ID");
                 String autor = resultSet.getString("Autor");
-                String tytul = resultSet.getString("Utwor");
+                String utwor = resultSet.getString("Utwor");
                 String album = resultSet.getString("Album");
+                String dodanoPrzez = resultSet.getString("DodanoPrzez");
 
-                Muzyka muzyka = new Muzyka(id, autor, tytul, album);
+                Muzyka muzyka = new Muzyka(id, autor, utwor, album, dodanoPrzez);
                 listaMuzyki.add(muzyka);
             }
 
@@ -63,17 +72,4 @@ public class Muzyka {
 
         return listaMuzyki;
     }
-
-    public static void main(String[] args) {
-        List<Muzyka> listaMuzyki = Muzyka.pobierzDaneZBazy();
-
-        for (Muzyka muzyka : listaMuzyki) {
-            System.out.println("ID: " + muzyka.getId());
-            System.out.println("Autor: " + muzyka.getAutor());
-            System.out.println("Utwor: " + muzyka.getUtwor());
-            System.out.println("Album: " + muzyka.getAlbum());
-            System.out.println();
-        }
-    }
 }
-

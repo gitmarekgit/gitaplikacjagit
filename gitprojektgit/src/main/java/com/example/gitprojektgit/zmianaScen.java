@@ -6,10 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -19,11 +16,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Objects;
+import java.util.Optional;
 
 public class zmianaScen {
+
     private Stage stage;
     private Scene scene;
     private Parent root;
+    private Scene poprzedniaScena; // Dodaj zmienną do przechowywania poprzedniej sceny
 
     @FXML
     private TextField nazwaUzytkownika;
@@ -33,9 +33,14 @@ public class zmianaScen {
     private TextField potwierdzHaslo;
     @FXML
     private Label zleDane;
-
     @FXML
     private AnchorPane scenePane;
+
+    @FXML
+    private Label nazwaStudia;
+
+    @FXML
+    private Button cofnij; // Dodaj identyfikator przycisku
 
     // Metoda do sprawdzenia czy użytkownik istnieje w bazie danych
     private boolean validateLogin(String username, String password) {
@@ -104,7 +109,6 @@ public class zmianaScen {
         }
     }
 
-
     public void rejestracja(ActionEvent event) throws IOException {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("rejestracja.fxml")));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -122,6 +126,9 @@ public class zmianaScen {
     }
 
     public void listaUtworow(ActionEvent event) throws IOException {
+        // Przy przejściu do nowej sceny, ustaw poprzednią scenę
+        poprzedniaScena = scene;
+
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("studioNagranLista.fxml")));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -137,28 +144,44 @@ public class zmianaScen {
         stage.show();
     }
 
-    public void zamknijAplikacje(ActionEvent event){
+    public void zamknijAplikacje(ActionEvent event) {
         //wyskakuje okienko ktore pyta czy napewno chcesz wyjsc
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("EXIT");
         alert.setHeaderText("Aplikacja zostanie wyłączona");
         alert.setContentText("Czy napewno chcesz wyjść?");
 
-        if(alert.showAndWait().get()== ButtonType.OK){
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.OK) {
             //jak kliknie sie ok to sie wylacza a jak cancel to wraca do poprzedniej sceny
             stage = (Stage) scenePane.getScene().getWindow();
             stage.close();
         }
     }
 
-    @FXML
-    private Label nazwaStudia;
-
-    public void zmienNazweStudia() throws IOException{
+    public void zmienNazweStudia() throws IOException {
         //zmiana nazwy studia
         String nowaNazwaStudia = zmianaNazwyStudia.pokazOkno();
         nazwaStudia.setText(nowaNazwaStudia);
     }
 
+    @FXML
+    public void cofnijDoPoprzedniejSceny(ActionEvent event) {
+        try {
+            // Załaduj scenę "studioNagran.fxml"
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("studioNagran.fxml"));
+            Parent root = loader.load();
 
+            // Pobierz stadium (Stage) z obecnej sceny
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Ustaw nową scenę na stadium
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Obsłuż błąd ładowania sceny
+        }
+    }
 }
+
