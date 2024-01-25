@@ -6,10 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -146,5 +143,17 @@ public class zmianaScen {
         //zmiana nazwy studia
         String nowaNazwaStudia = zmianaNazwyStudia.pokazOkno();
         nazwaStudia.setText(nowaNazwaStudia);
+    }
+
+    public void ustawTrybJasny() throws IOException{
+        scenePane.getStylesheets().add("file:/C:/Users/marek/Desktop/gitprojektgit/gitaplikacjagit/gitprojektgit/src/styles/light_mode.css");
+        scenePane.getStylesheets().remove("file:/C:/Users/marek/Desktop/gitprojektgit/gitaplikacjagit/gitprojektgit/src/styles/dark_mode.css");
+        System.out.println("lightmode");
+    }
+
+    public void ustawTrybCiemny() throws IOException{
+        scenePane.getStylesheets().add("file:/C:/Users/marek/Desktop/gitprojektgit/gitaplikacjagit/gitprojektgit/src/styles/dark_mode.css");
+        scenePane.getStylesheets().remove("file:/C:/Users/marek/Desktop/gitprojektgit/gitaplikacjagit/gitprojektgit/src/styles/light_mode.css");
+        System.out.println("darkmode");
     }
 }
