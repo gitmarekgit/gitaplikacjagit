@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gitprojektgit.studioNagran">
+    <TableView fx:id="tabelaMuzyki" layoutX="100.0" layoutY="100.0" prefHeight="200.0" prefWidth="400.0">
+        <columns>
+            <TableColumn fx:id="autorColumn" prefWidth="100" text="Autor" />
+            <TableColumn fx:id="tytulColumn" prefWidth="100" text="Tytuł" />
+            <TableColumn fx:id="albumColumn" prefWidth="100" text="Album" />
+            <TableColumn fx:id="dodanoPrzezColumn" prefWidth="100" text="Dodano przez" />
+        </columns>
+    </TableView>
+    <Button fx:id="plus" layoutX="514.0" layoutY="316.0" mnemonicParsing="false" onAction="#dodaj" style="-fx-background-radius: 30;" text="+" textAlignment="CENTER">
+    </Button>
+    <!-- Dodaj przycisk "Cofnij" -->
+    <Button fx:id="cofnij" layoutX="30.0" layoutY="30.0" mnemonicParsing="false" onAction="#cofnijDoPoprzedniejSceny" text="Cofnij" />
+</AnchorPane>

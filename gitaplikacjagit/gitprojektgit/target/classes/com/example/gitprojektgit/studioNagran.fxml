@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="scenePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="body" stylesheets="file:/C:/Users/marek/Desktop/gitprojektgit/gitaplikacjagit/gitprojektgit/src/styles/light_mode.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gitprojektgit.zmianaScen">
+    <children>
+        <MenuBar prefHeight="26.0" prefWidth="600.0">
+            <menus>
+                <Menu mnemonicParsing="false" text="Plik">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Zapisz" />
+                        <MenuItem mnemonicParsing="false" text="Regulamin" />
+                        <MenuItem fx:id="zamknij" mnemonicParsing="false" onAction="#zamknijAplikacje" text="Zamknij" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Ustawienia">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#zmienNazweStudia" text="Zmień nazwę studia" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <Label layoutX="205.0" layoutY="42.0" styleClass="text" stylesheets="file:/C:/Users/marek/Desktop/gitprojektgit/gitaplikacjagit/gitprojektgit/src/styles/light_mode.css" text="Witaj w studiu nagrań">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <Label fx:id="nazwaStudia" alignment="CENTER" contentDisplay="CENTER" layoutX="-7.0" layoutY="79.0" prefHeight="38.0" prefWidth="614.0" styleClass="text" stylesheets="file:/C:/Users/marek/Desktop/gitprojektgit/gitaplikacjagit/gitprojektgit/src/styles/light_mode.css" text="SUMU" textAlignment="CENTER">
+            <font>
+                <Font name="Cambria" size="30.0" />
+            </font>
+        </Label>
+
+        <Button fx:id="lista" layoutX="185.0" layoutY="151.0" mnemonicParsing="false" onAction="#listaUtworow" prefHeight="43.0" prefWidth="232.0" text="Lista utworów">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Button>
+        <Button fx:id="ustawienia" layoutX="184.0" layoutY="219.0" mnemonicParsing="false" onAction="#ustawienia" prefHeight="38.0" prefWidth="232.0" text="Ustawienia">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Button>
+        <Button fx:id="wyjscie" layoutX="184.0" layoutY="288.0" mnemonicParsing="false" onAction="#zamknijAplikacje" prefHeight="38.0" prefWidth="232.0" text="Wyjdź">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Button>
+    </children>
+</AnchorPane>

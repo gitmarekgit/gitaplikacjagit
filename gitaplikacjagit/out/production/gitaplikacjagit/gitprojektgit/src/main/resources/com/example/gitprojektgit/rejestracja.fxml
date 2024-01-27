@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: DFEFFB;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gitprojektgit.zmianaScen">
+    <left>
+        <AnchorPane prefHeight="400.0" prefWidth="244.0" BorderPane.alignment="CENTER">
+            <children>
+                <ImageView fitHeight="241.0" fitWidth="199.0" layoutX="46.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true" smooth="false">
+                    <image>
+                        <Image url="file:/C:/Users/marek/Desktop/gitprojektgit/gitaplikacjagit/gitprojektgit/src/img/parasolka.png" />
+                    </image>
+                </ImageView>
+            </children></AnchorPane>
+    </left>
+    <center>
+        <AnchorPane fx:id="potwierdzHasło" prefHeight="400.0" prefWidth="334.0" BorderPane.alignment="CENTER">
+            <children>
+                <Label layoutX="8.0" layoutY="187.0">
+                    <font>
+                        <Font name="Book Antiqua" size="16.0" />
+                    </font></Label>
+                <Label layoutX="8.0" layoutY="228.0">
+                    <font>
+                        <Font name="Book Antiqua" size="16.0" />
+                    </font></Label>
+                <TextField fx:id="nazwaUzytkownika" layoutX="84.0" layoutY="172.0" prefHeight="26.0" prefWidth="186.0" promptText="Nazwa użytkownika" />
+                <PasswordField fx:id="haslo" layoutX="85.0" layoutY="209.0" prefHeight="26.0" prefWidth="185.0" promptText="Hasło" />
+                <Button fx:id="zarejestruj" layoutX="108.0" layoutY="301.0" mnemonicParsing="false" onAction="#zarejestrujUzytkownika" prefHeight="38.0" prefWidth="138.0" text="Zarejestruj się" textAlignment="CENTER">
+                    <font>
+                        <Font size="16.0" />
+                    </font></Button>
+                <Label fx:id="zleDane" layoutX="125.0" layoutY="120.0" prefHeight="51.0" prefWidth="176.0" textFill="RED" />
+                <ImageView fitHeight="196.0" fitWidth="259.0" layoutX="48.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="file:/C:/Users/marek/Desktop/gitprojektgit/gitaplikacjagit/gitprojektgit/src/img/logo.png" />
+                    </image>
+                </ImageView>
+                <Label layoutX="127.0" layoutY="362.0" text="Masz już konto?" />
+                <Hyperlink layoutX="213.0" layoutY="359.0" onAction="#logowanie" text="Zaloguj się!" />
+            <PasswordField fx:id="potwierdzHaslo" layoutX="84.0" layoutY="250.0" prefHeight="26.0" prefWidth="188.0" promptText="Potwierdź hasło" />
+            </children>
+        </AnchorPane>
+    </center>
+</BorderPane>
